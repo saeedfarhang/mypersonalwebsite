@@ -23,12 +23,10 @@ const Container = styled.div`
   }
   .foot-social-btns {
     display: flex;
-    gap: 15px;
     margin-bottom: 20px;
   }
   .foot-btns {
     display: flex;
-    gap: 10px;
     margin-bottom: 50px;
     @media screen and (max-width: 838px) {
       flex-wrap: wrap;
@@ -92,16 +90,22 @@ export default function Footer(props) {
             </Typography>
           </div>
           <div className="foot-social-btns">
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
           </div>
           <div className="foot-btns">
-            <Button icon="download">download my ressume</Button>
-            <Button icon="download">donate me</Button>
-            <Button icon="download">hire me</Button>
+            <Button margin="5px 12px 5px 0" icon="download">
+              download my ressume
+            </Button>
+            <Button margin="5px 12px 5px 0" icon="download">
+              donate me
+            </Button>
+            <Button margin="5px 12px 5px 0" icon="download">
+              hire me
+            </Button>
           </div>
           <img
             src={`${process.env.PUBLIC_URL}/assets/scrolltotop.png`}

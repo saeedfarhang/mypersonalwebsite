@@ -80,17 +80,14 @@ const Container = styled.div`
       .nav-buttons {
         display: flex;
         width: 100%;
+        align-items: center;
         .nav-btns {
           display: flex;
           flex-wrap: wrap;
-          gap: 25px;
-          @media screen and (max-width: 1210px) {
-            gap: 15px;
-          }
+          align-items: center;
         }
         .nav-social-btns {
           display: flex;
-          gap: 15px;
           margin-left: 30px;
           @media screen and (max-width: 1210px) {
             margin-left: 10px;
@@ -111,7 +108,6 @@ const Container = styled.div`
         .nav-publishes {
           width: 100%;
           display: flex;
-          gap: 10px;
           @media screen and (max-width: 940px) {
             justify-content: center;
             .pcm-last-child {
@@ -166,15 +162,21 @@ export default function NavBar() {
         <div className="nav-extra-content-container">
           <div className="nav-buttons">
             <div className="nav-btns">
-              <Button icon="download">download my ressume</Button>
-              <Button icon="download">donate me</Button>
-              <Button icon="download">hire me</Button>
+              <Button margin="5px 12px 5px 0" icon="download">
+                download my ressume
+              </Button>
+              <Button margin="5px 12px 5px 0" icon="download">
+                donate me
+              </Button>
+              <Button margin="5px 12px 5px 0" icon="download">
+                hire me
+              </Button>
               <div className="nav-social-btns">
-                <SocialLink social="twitter" />
-                <SocialLink social="twitter" />
-                <SocialLink social="twitter" />
-                <SocialLink social="twitter" />
-                <SocialLink social="twitter" />
+                <SocialLink marginRight="12px" social="twitter" />
+                <SocialLink marginRight="12px" social="twitter" />
+                <SocialLink marginRight="12px" social="twitter" />
+                <SocialLink marginRight="12px" social="twitter" />
+                <SocialLink marginRight="12px" social="twitter" />
               </div>
             </div>
           </div>

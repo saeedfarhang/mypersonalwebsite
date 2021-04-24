@@ -13,14 +13,13 @@ const Container = styled.div`
     padding: 44px 10vw 0 10vw;
     display: flex;
     justify-content: center;
-    gap: 10%;
     @media screen and (max-width: 860px) {
-      gap: 0;
       flex-direction: column-reverse;
       align-items: center;
     }
   }
   .contactme-form-container {
+    margin: 5%;
     min-width: 400px;
     width: 400px;
     @media screen and (max-width: 960px) {
@@ -41,6 +40,7 @@ const Container = styled.div`
     }
   }
   .cm-content {
+    margin: 5%;
     max-width: 500px;
     @media screen and (max-width: 860px) {
       max-width: 100%;
@@ -50,7 +50,6 @@ const Container = styled.div`
     .cm-social-links {
       margin-top: 20px;
       display: flex;
-      gap: 15px;
     }
     .cm-donateme-btn {
       margin-top: 20px;
@@ -68,14 +67,15 @@ export default function ContactMeSection(props) {
         start: "top 85%",
         end: "top 20%",
       },
-      x: "100vw",
+      opacity: 0,
+      x: "50vw",
     });
     TweenLite.from(".contactme-form-container", {
       scrollTrigger: {
         trigger: ".contactme-form-container",
         scrub: 1,
-        start: "top 65%",
-        end: "top 20%",
+        start: "top 75%",
+        end: "top 30%",
       },
       opacity: 0,
       x: -100,
@@ -84,11 +84,11 @@ export default function ContactMeSection(props) {
       scrollTrigger: {
         trigger: ".cm-content",
         scrub: 1,
-        start: "top 65%",
-        end: "top 20%",
+        start: "top 75%",
+        end: "top 30%",
       },
       opacity: 0,
-      x: 100,
+      x: "100vw",
     });
   }, []);
   return (
@@ -126,6 +126,7 @@ export default function ContactMeSection(props) {
         </div>
         <div className="cm-content">
           <Typography
+            as="p"
             className="cm-content-text"
             fontSize="18px"
             fontWeight="100"
@@ -138,10 +139,10 @@ export default function ContactMeSection(props) {
             response as soon as I can.
           </Typography>
           <div className="cm-social-links">
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
-            <SocialLink social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
+            <SocialLink marginRight="12px" social="twitter" />
           </div>
           <Button className="cm-donateme-btn" icon="download">
             donate me

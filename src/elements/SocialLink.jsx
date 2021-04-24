@@ -5,6 +5,7 @@ const Container = styled.div`
   width: fit-content;
   height: fit-content;
   transition: all 0.2s ease;
+  margin-right: ${(props) => props.marginRight};
   :hover {
     transform: translateY(-3px);
   }
@@ -12,7 +13,7 @@ const Container = styled.div`
 
 export default function SocialLink(props) {
   return (
-    <Container>
+    <Container {...props}>
       <a target="_blank" rel="author" href={props.href}>
         {props.social === "twitter" ? (
           <svg

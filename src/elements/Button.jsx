@@ -15,6 +15,7 @@ const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: ${(props) => props.margin};
   transition: all 0.2s ease;
   :hover {
     background-color: ${(props) =>

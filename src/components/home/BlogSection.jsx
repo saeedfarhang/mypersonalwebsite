@@ -35,16 +35,17 @@ export default function BlogSection(props) {
         start: "top 100%",
         end: "top 20%",
       },
-      x: "100vw",
+      opacity: 0,
+      x: "50vw",
     });
     TweenLite.from(".blogcards-container", {
       scrollTrigger: {
         trigger: ".blog-section-title",
-        start: "top 100%",
-        end: "top 20%",
+        start: "top 90%",
+        end: "top 50%",
         scrub: 1,
       },
-      duration: 1,
+      // duration: 1,
       opacity: 0,
       y: 100,
     });

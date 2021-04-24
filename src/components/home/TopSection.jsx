@@ -97,10 +97,14 @@ export default function TopSection() {
     setOffsetY(window.pageYOffset);
   };
 
-  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     window.addEventListener("scroll", handleScroll);
     TweenLite.from(".title", {
+      scrollTrigger: {
+        trigger: ".title",
+        toggleActions: "play reset play play",
+      },
       delay: 0.3,
       duration: 0.5,
       opacity: 0,
@@ -108,6 +112,10 @@ export default function TopSection() {
       y: -100,
     });
     TweenLite.from(".description", {
+      scrollTrigger: {
+        trigger: ".description",
+        toggleActions: "play reset play play",
+      },
       delay: 0.8,
       duration: 0.5,
       opacity: 0,
@@ -115,6 +123,10 @@ export default function TopSection() {
       x: -100,
     });
     TweenLite.from(".social-links", {
+      scrollTrigger: {
+        trigger: ".social-links",
+        toggleActions: "play reset play play",
+      },
       delay: 1.2,
       duration: 0.5,
       opacity: 0,
@@ -122,6 +134,10 @@ export default function TopSection() {
       x: 10,
     });
     TweenLite.from(".bottom", {
+      scrollTrigger: {
+        trigger: ".bottom",
+        toggleActions: "play reset play play",
+      },
       delay: 1.8,
       duration: 0.5,
       opacity: 0,

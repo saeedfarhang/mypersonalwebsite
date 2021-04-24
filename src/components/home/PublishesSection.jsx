@@ -8,7 +8,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 const Container = styled.div`
   .pc-container {
     padding: 30px 8vw 15px 8vw;
-    gap: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +31,8 @@ export default function PublishesSection(props) {
         start: "top 100%",
         end: "top 20%",
       },
-      x: "100vw",
+      opacity: 0,
+      x: "50vw",
     });
     TweenLite.from(".p-seemore", {
       scrollTrigger: {
@@ -43,19 +43,30 @@ export default function PublishesSection(props) {
       },
       x: -500,
     });
+    TweenLite.from(".pc-container", {
+      scrollTrigger: {
+        trigger: ".pc-container",
+        start: "top 90%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      // duration: 1,
+      opacity: 0,
+      y: 100,
+    });
   }, []);
   return (
     <Container>
       <SectionTitle className="publishes-title-section">publishes</SectionTitle>
       <div className="pc-container">
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
-        <PublishCard />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
+        <PublishCard margin="10px" />
       </div>
       <SeeMore className="p-seemore" />
     </Container>

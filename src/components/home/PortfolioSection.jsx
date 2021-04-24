@@ -15,13 +15,15 @@ const Container = styled.div`
   }
   .hold-shift-hint {
     display: flex;
-    gap: 5px;
     width: fit-content;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
     @media screen and (max-width: 700px) {
       display: none;
+    }
+    img {
+      margin: 0 5px;
     }
   }
   .portfolio-cards {
@@ -55,8 +57,9 @@ export default function PortfolioSection(props) {
         start: "center 80%",
         end: "center 250px",
       },
+      opacity: 0,
       duration: 1.3,
-      x: 1000,
+      x: "-20vw",
     });
   }, []);
   return (

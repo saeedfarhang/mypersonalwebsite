@@ -7,13 +7,14 @@ const Container = styled.div`
   background: ${(props) =>
     props.imageUrl
       ? `url(${props.imageUrl})`
-      : `url('https://i0.wp.com/clubexperience.blog/wp-content/uploads/2019/10/Sarcasm-header.png?fit=560%2C315&ssl=1')`};
+      : `url(${process.env.PUBLIC_URL}/assets/eulerProject.png)`};
   border: solid 8px #2c2c2c;
   box-shadow: 0 0 0 10px #00000016;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 15px;
   .pcm-open-btn {
     svg {
       transition: all 0.2s ease;
