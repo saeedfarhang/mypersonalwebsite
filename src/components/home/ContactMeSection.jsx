@@ -89,6 +89,7 @@ export default function ContactMeSection(props) {
       },
       opacity: 0,
       x: "100vw",
+      display: "none",
     });
   }, []);
   return (
