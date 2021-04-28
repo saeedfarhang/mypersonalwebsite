@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import BlogCardMinimal from "../../elements/BlogCardMinimal";
 import Button from "../../elements/Button";
@@ -13,19 +13,44 @@ const Container = styled.div`
   width: ${(props) => (props.menuOpen ? "95%" : "100%")};
   top: 0;
   left: 50%;
+  display: ${(props) => (props.menuOpen ? "block" : "flex")};
+  align-items: center;
   transform: translateX(-50%);
   /* right: auto; */
-  height: ${(props) => (props.menuOpen ? "500px" : "150px")};
+  height: ${(props) =>
+    props.offsetYc <= 150
+      ? props.menuOpen
+        ? "500px"
+        : "150px"
+      : props.menuOpen
+      ? "500px"
+      : "100px"};
   @media screen and (max-width: 1210px) {
-    height: ${(props) => (props.menuOpen ? "650px" : "150px")};
+    height: ${(props) =>
+      props.offsetYc <= 150
+        ? props.menuOpen
+          ? "650px"
+          : "150px"
+        : props.menuOpen
+        ? "650px"
+        : "100px"};
   }
   @media screen and (max-width: 722px) {
-    height: ${(props) => (props.menuOpen ? "520px" : "150px")};
+    /* height: ${(props) => (props.menuOpen ? "520px" : "150px")}; */
+    height: ${(props) =>
+      props.offsetYc <= 150
+        ? props.menuOpen
+          ? "520px"
+          : "120px"
+        : props.menuOpen
+        ? "520px"
+        : "100px"};
   }
   z-index: 100;
   border-radius: ${(props) => (props.menuOpen ? "0 0 25px 25px" : "0")};
   transition: height 0.2s ease;
   .close-menu-container {
+    width: ${(props) => (props.menuOpen ? "unset" : "100%")};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,8 +62,21 @@ const Container = styled.div`
       margin: 64px 30px 70px 30px;
     }
     .name-holder {
+      display: flex;
+      justify-content: center;
       transform: ${(props) => (props.menuOpen ? "translateX(-2.5vw)" : "")};
       margin-right: 10px;
+      .name-holder-text {
+        font-size: 24px;
+      }
+      .name-holder-slash {
+        margin: 0 10px;
+      }
+      @media screen and (max-width: 440px) {
+        .name-holder-text {
+          font-size: 18px;
+        }
+      }
     }
     .hamb-menu {
       transform: ${(props) => (props.menuOpen ? "translateX(2.5vw)" : "")};
@@ -131,16 +169,56 @@ const Container = styled.div`
       }
     }
   }
+  .nav-overly {
+    display: ${(props) => (props.menuOpen ? "block" : "none")};
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
 `;
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [offsetYc, setOffsetYc] = useState(0);
+  const handleScroll = () => {
+    setOffsetYc(window.scrollY);
+    setMenuOpen(false);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <Container menuOpen={menuOpen}>
+    <Container menuOpen={menuOpen} offsetYc={offsetYc}>
       <div className="close-menu-container">
         <div className="name-holder">
-          <Typography as="h2" fontSize="24px" fontWeight="bold">
-            saeedfarhang / codinguy
+          <Typography
+            className="name-holder-sf name-holder-text"
+            as="h2"
+            // fontSize="24px"
+            fontWeight="bold"
+          >
+            saeedfarhang
+          </Typography>
+          <Typography
+            className="name-holder-slash name-holder-text"
+            as="h2"
+            // fontSize="24px"
+            fontWeight="bold"
+          >
+            /
+          </Typography>
+          <Typography
+            className="name-holder-cg name-holder-text"
+            as="h2"
+            // fontSize="24px"
+            fontWeight="bold"
+          >
+            codinguy
           </Typography>
         </div>
         <div
@@ -192,6 +270,7 @@ export default function NavBar() {
           </div>
         </div>
       </div>
+      <div className="nav-overly" onClick={() => setMenuOpen(false)}></div>
     </Container>
   );
 }

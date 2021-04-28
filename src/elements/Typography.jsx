@@ -6,7 +6,7 @@ const CustomTypography = styled.span`
   padding: ${(props) => (props.padding ? props.padding : "0")};
   margin: ${(props) => (props.margin ? props.margin : "0")};
   font-weight: ${(props) => props.fontWeight};
-  font-size: calc(${(props) => props.fontSize});
+  font-size: ${(props) => props.fontSize};
 
   color: ${(props) => props.color && props.color};
   text-align: ${(props) => (props.textAlign ? props.textAlign : "center")};

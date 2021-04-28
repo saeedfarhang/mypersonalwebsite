@@ -37,7 +37,7 @@ export default function ProfileSection(props) {
   const [tags, setTags] = useState([]);
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    axios.get("data/ressumeTags.json").then((res) => {
+    axios.get(`${process.env.PUBLIC_URL}/data/ressumeTags.json`).then((res) => {
       setTags(res.data);
     });
 
