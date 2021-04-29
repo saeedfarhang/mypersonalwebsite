@@ -36,6 +36,7 @@ const Container = styled.div`
     position: absolute;
     bottom: 10px;
     right: 10px;
+    cursor: pointer;
   }
 `;
 
@@ -63,7 +64,7 @@ export default function PortFolioCard(props) {
           {props.children}
         </Typography>
       </Scrollbars>
-      <div className="open-link">
+      <div className="open-link" onClick={() => window.open(props.href)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

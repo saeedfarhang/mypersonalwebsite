@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import styled from "styled-components";
 import PortFolioCard from "../../elements/PortFolioCard";
@@ -6,6 +6,7 @@ import SectionTitle from "../../elements/SectionTitle";
 import { gsap, TweenLite, Power3 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Typography from "../../elements/Typography";
+import axios from "axios";
 
 const Container = styled.div`
   .portfolio-cards-container {
@@ -37,8 +38,12 @@ const Container = styled.div`
 `;
 
 export default function PortfolioSection(props) {
+  const [portfolio, setPortfolio] = useState([]);
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
+    axios
+      .get(`${process.env.PUBLIC_URL}/data/portfolio.json`)
+      .then((res) => setPortfolio(res.data));
     TweenLite.from(".portfolio-section-title", {
       scrollTrigger: {
         trigger: ".portfolio-section-title",
@@ -84,45 +89,11 @@ export default function PortfolioSection(props) {
         className="portfolio-cards-container"
       >
         <div className="portfolio-cards">
-          <PortFolioCard title="Lorem ipsum" href="">
-            Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit
-            amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula
-            sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet
-            et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem
-            ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia
-            in, elementum id enim. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Pellentesque in
-            ipsum id orci porta dapibus.
-          </PortFolioCard>
-          <PortFolioCard title="Lorem ipsum" href="">
-            Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit
-            amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula
-            sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet
-            et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem
-            ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia
-            in, elementum id enim. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Pellentesque in
-            ipsum id orci porta dapibus.
-          </PortFolioCard>
-          <PortFolioCard title="Lorem ipsum" href="">
-            Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit
-            amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula
-            sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet
-            et, porttitor at sem. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem
-            ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia
-            in, elementum id enim. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
-            sit amet aliquam vel, ullamcorper sit amet ligula. Pellentesque in
-            ipsum id orci porta dapibus.
-          </PortFolioCard>
+          {portfolio.map((item) => (
+            <PortFolioCard title={item.title} href={item.url}>
+              {item.snippet_text}
+            </PortFolioCard>
+          ))}
         </div>
       </Scrollbars>
     </Container>
